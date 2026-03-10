@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
+<style>
+:root {
       --bg: #0a1324;
       --bg2: #0d1728;
       --text: #ecf1fb;
@@ -19,27 +19,27 @@
       --line: rgba(255, 255, 255, 0.15);
       --card: rgba(14, 24, 41, 0.84);
       --glow: 0 0 45px rgba(239, 133, 79, 0.35);
-    }
+}
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
-    body {
+body {
       font-family: "Inter", sans-serif;
-      color: var(--text);
+  color: var(--text);
       background:
         radial-gradient(1000px 550px at 78% 50%, rgba(239, 133, 79, 0.14), transparent 60%),
         radial-gradient(1200px 700px at 5% 100%, rgba(48, 112, 185, 0.2), transparent 55%),
         linear-gradient(90deg, #081122 0%, #0b1629 46%, #08202a 100%);
       line-height: 1.55;
-      overflow-x: hidden;
-    }
+  overflow-x: hidden;
+}
 
     .bg-lines {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -2;
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -2;
       background: repeating-linear-gradient(
         90deg,
         rgba(255,255,255,0.03) 0px,
@@ -64,7 +64,7 @@
       padding: 14px 0;
       backdrop-filter: blur(2px);
       background: linear-gradient(to bottom, rgba(6,12,24,0.72), rgba(6,12,24,0));
-    }
+}
 
     .nav {
       display: flex;
@@ -87,15 +87,15 @@
     .logo .dot { color: var(--accent); }
 
     .menu {
-      display: flex;
-      align-items: center;
+  display: flex;
+  align-items: center;
       flex-wrap: wrap;
       gap: 20px;
       flex: 1;
-    }
+}
 
     .menu a {
-      text-decoration: none;
+  text-decoration: none;
       color: #d6dfef;
       font-size: clamp(14px, 1.25vw, 20px);
       font-weight: 600;
@@ -103,13 +103,13 @@
       position: relative;
       padding-bottom: 6px;
       transition: 0.22s;
-    }
+}
 
     .menu a:hover,
     .menu a.active {
-      color: var(--accent);
-      opacity: 1;
-    }
+  color: var(--accent);
+  opacity: 1;
+}
 
     .menu a.active::after,
     .menu a:hover::after {
@@ -125,9 +125,9 @@
 
     .nav-side {
       display: flex;
-      align-items: center;
+  align-items: center;
       gap: 14px;
-    }
+}
 
     .mini-avatar {
       width: 56px;
@@ -162,33 +162,38 @@
       align-items: center;
       position: relative;
       padding-top: clamp(92px, 10vw, 120px);
+      padding-bottom: 46px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
+      grid-template-columns: 1fr 1fr;
       align-items: center;
       gap: clamp(14px, 2vw, 30px);
       width: 100%;
     }
 
+    .hero-grid > div:first-child {
+      max-width: 760px;
+    }
+
     .open-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
       border: 1px solid rgba(239, 133, 79, 0.45);
       color: #ffb48e;
       background: rgba(239, 133, 79, 0.14);
-      border-radius: 999px;
+  border-radius: 999px;
       padding: clamp(8px, 1vw, 12px) clamp(14px, 1.4vw, 22px);
-      font-size: clamp(14px, 1.5vw, 30px);
+      font-size: clamp(13px, 1.15vw, 20px);
       font-weight: 600;
       margin-bottom: clamp(14px, 1.5vw, 24px);
-    }
+}
 
     .hero h1 {
       font-family: "Playfair Display", serif;
-      font-size: clamp(52px, 8.4vw, 138px);
+      font-size: clamp(48px, 7.1vw, 116px);
       line-height: 0.93;
       margin-bottom: clamp(14px, 1.6vw, 24px);
       letter-spacing: 0.3px;
@@ -198,17 +203,17 @@
       display: block;
       color: #ecf1fb;
       font-style: italic;
-      font-weight: 500;
-    }
+  font-weight: 500;
+}
 
     .hero .name {
-      display: block;
+  display: block;
       color: #f1a34f;
       font-weight: 700;
     }
 
     .hero .role {
-      font-size: clamp(24px, 2.25vw, 42px);
+      font-size: clamp(20px, 1.8vw, 34px);
       color: #ccd7eb;
       max-width: 34ch;
       margin-bottom: 12px;
@@ -216,38 +221,38 @@
     }
 
     .hero .summary {
-      color: var(--muted);
-      font-size: clamp(20px, 1.7vw, 31px);
+  color: var(--muted);
+      font-size: clamp(16px, 1.35vw, 24px);
       max-width: 42ch;
-      margin-bottom: 24px;
-    }
+      margin-bottom: 18px;
+}
 
     .socials {
-      display: flex;
+  display: flex;
       gap: 10px;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
     }
 
     .socials a {
-      width: 56px;
-      height: 56px;
+      width: 50px;
+      height: 50px;
       border: 1px solid rgba(255, 255, 255, 0.24);
       background: rgba(255,255,255,0.04);
       border-radius: 12px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
       color: #d8e0f0;
-      text-decoration: none;
+  text-decoration: none;
       transition: 0.2s;
-    }
+}
 
     .socials a:hover {
       border-color: rgba(239, 133, 79, 0.65);
       color: #ffc09f;
-      transform: translateY(-2px);
+  transform: translateY(-2px);
       box-shadow: 0 10px 20px rgba(5, 10, 18, 0.35);
-    }
+}
 
     .socials svg { width: 22px; height: 22px; }
 
@@ -267,20 +272,20 @@
     }
 
     .orb-ring {
-      width: clamp(340px, 36vw, 580px);
-      height: clamp(340px, 36vw, 580px);
+      width: clamp(320px, 33vw, 530px);
+      height: clamp(320px, 33vw, 530px);
       box-shadow: inset 0 0 60px rgba(239, 133, 79, 0.08);
-    }
+}
 
     .orb-ring-2 {
-      width: clamp(390px, 40vw, 640px);
-      height: clamp(390px, 40vw, 640px);
+      width: clamp(360px, 37vw, 590px);
+      height: clamp(360px, 37vw, 590px);
       border-style: dashed;
       opacity: 0.55;
-    }
+}
 
     .hero-photo {
-      width: min(450px, 92%);
+      width: min(420px, 90%);
       aspect-ratio: 1 / 1;
       border-radius: 50%;
       overflow: hidden;
@@ -327,16 +332,16 @@
       border: 2px solid rgba(235, 241, 251, 0.46);
       border-radius: 18px;
       margin: 0 auto 6px;
-      position: relative;
-    }
+  position: relative;
+}
 
     .mouse::before {
-      content: "";
+  content: "";
       width: 5px;
       height: 9px;
       border-radius: 999px;
       background: rgba(235, 241, 251, 0.75);
-      position: absolute;
+  position: absolute;
       left: 50%;
       transform: translateX(-50%);
       top: 7px;
@@ -357,16 +362,16 @@
       padding: clamp(58px, 8vw, 96px) 0;
       border-top: 1px solid rgba(255,255,255,0.06);
       background: linear-gradient(180deg, rgba(11, 20, 36, 0.55), rgba(7, 14, 28, 0.65));
-    }
+}
 
     .section h2 {
       font-family: "Playfair Display", serif;
       font-size: clamp(42px, 5vw, 60px);
       margin-bottom: 12px;
-    }
+}
 
     .section p.lead {
-      color: var(--muted);
+  color: var(--muted);
       font-size: clamp(17px, 1.35vw, 22px);
       max-width: 80ch;
       margin-bottom: 28px;
@@ -376,14 +381,14 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 16px;
-    }
+}
 
     .card {
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: 16px;
       padding: 18px;
-    }
+}
 
     .card h3 { font-size: clamp(21px, 2.1vw, 28px); margin-bottom: 10px; }
     .card p { color: var(--muted); font-size: clamp(15px, 1.25vw, 18px); }
@@ -399,7 +404,7 @@
 
     .tags { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
     .tags span {
-      font-size: 13px;
+  font-size: 13px;
       padding: 4px 10px;
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,0.2);
@@ -413,7 +418,7 @@
       border-left: 3px solid rgba(239, 133, 79, 0.75);
       border-radius: 14px;
       padding: 16px;
-    }
+}
     .job h3 { font-size: clamp(22px, 2vw, 29px); margin-bottom: 2px; }
     .job .meta { color: #f7b190; font-size: clamp(14px, 1.2vw, 18px); margin-bottom: 8px; }
     .job ul { padding-left: 18px; color: var(--muted); font-size: clamp(15px, 1.2vw, 18px); }
@@ -423,7 +428,7 @@
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 10px;
       margin-top: 16px;
-    }
+}
 
     .contact-grid a {
       text-decoration: none;
@@ -437,23 +442,23 @@
 
     .contact-grid a:hover { border-color: rgba(239, 133, 79, 0.65); }
 
-    footer {
+footer {
       padding: 26px 0 32px;
-      text-align: center;
-      color: var(--muted);
+  text-align: center;
+  color: var(--muted);
       font-size: 15px;
-    }
+}
 
-    .reveal {
-      opacity: 0;
+.reveal {
+  opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.55s ease, transform 0.55s ease;
-    }
+}
 
-    .reveal.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 
     .mobile-toggle {
       display: none;
@@ -504,6 +509,7 @@
       .hero .role { font-size: 24px; }
       .hero .summary { font-size: 20px; }
       .open-pill { font-size: 20px; }
+      .hero-grid { grid-template-columns: 1.08fr 0.92fr; }
     }
 
     @media (max-width: 980px) {
@@ -515,7 +521,7 @@
       .nav { flex-wrap: wrap; }
       .nav-side { margin-left: auto; }
       .hero .role { max-width: 28ch; }
-    }
+}
 
     @media (max-width: 640px) {
       .container { width: calc(100% - 28px); }
@@ -528,8 +534,8 @@
       .open-pill { font-size: 17px; padding: 8px 14px; }
       .socials a { width: 48px; height: 48px; }
       .scroll-indicator { display: none; }
-    }
-  </style>
+}
+</style>
 </head>
 <body>
   <div class="bg-lines" aria-hidden="true"></div>
@@ -545,7 +551,7 @@
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
-      </nav>
+</nav>
 
       <div class="nav-side">
         <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menu">
@@ -620,7 +626,7 @@
         <div class="mouse"></div>
         <div>↓</div>
       </div>
-    </section>
+  </section>
 
     <section id="experience" class="section reveal">
       <div class="container">
@@ -646,29 +652,28 @@
             </ul>
           </article>
         </div>
-      </div>
-    </section>
+    </div>
+  </section>
 
     <section id="education" class="section reveal">
       <div class="container">
         <h2>Education</h2>
         <p class="lead">Base técnica em redes e especialização em dados aplicada ao contexto de negócio.</p>
         <div class="grid-3">
-          <article class="card">
+      <article class="card">
             <h3>PUC Minas</h3>
             <p>Pós-Graduação em Ciência de Dados e IA (em andamento desde 2024.2).</p>
-          </article>
-          <article class="card">
+      </article>
+      <article class="card">
             <h3>UNAMA</h3>
             <p>CST em Redes de Computadores (2017.1 - 2019.2).</p>
-          </article>
-          <article class="card">
+      </article>
+      <article class="card">
             <h3>Idiomas</h3>
             <p>Inglês intermediário para leitura técnica e comunicação profissional.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+      </article>
+    </div>
+  </section>
 
     <section id="projects" class="section reveal">
       <div class="container">
@@ -718,16 +723,16 @@
           <a href="tel:+5591982281917">(91) 9 8228-1917</a>
           <a href="https://www.linkedin.com/in/gmoreirati" target="_blank" rel="noopener noreferrer">linkedin.com/in/gmoreirati</a>
           <a href="https://github.com/glaydson-moreira" target="_blank" rel="noopener noreferrer">github.com/glaydson-moreira</a>
-        </div>
       </div>
-    </section>
+    </div>
+  </section>
   </main>
 
   <footer>
     <p>Glaydson Moreira • Belém - PA</p>
   </footer>
 
-  <script>
+<script>
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.menu a, .mobile-panel a');
 
@@ -744,11 +749,11 @@
     sections.forEach((section) => navObserver.observe(section));
 
     const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
           entry.target.classList.add('show');
-        }
-      });
+    }
+  });
     }, { threshold: 0.12 });
 
     document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
@@ -762,7 +767,7 @@
 
     mobilePanel?.querySelectorAll('a').forEach((link) => {
       link.addEventListener('click', () => mobilePanel.classList.remove('open'));
-    });
-  </script>
+});
+</script>
 </body>
 </html>
