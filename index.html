@@ -1,315 +1,768 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Glaydson Moreira | Data & Backend Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glaydson Moreira | Portfolio</title>
+  <meta name="description" content="Portfólio de Glaydson Moreira - BI, Dados e Automação" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a1324;
+      --bg2: #0d1728;
+      --text: #ecf1fb;
+      --muted: #97a6bf;
+      --accent: #ef854f;
+      --accent-soft: rgba(239, 133, 79, 0.15);
+      --line: rgba(255, 255, 255, 0.15);
+      --card: rgba(14, 24, 41, 0.84);
+      --glow: 0 0 45px rgba(239, 133, 79, 0.35);
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
-<style>
-:root{
---bg:#0a0a0f;
---card:#11111a;
---accent:#2ad1c9;
---text:#e7e7ec;
---muted:#9aa0a6;
-}
+    body {
+      font-family: "Inter", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1000px 550px at 78% 50%, rgba(239, 133, 79, 0.14), transparent 60%),
+        radial-gradient(1200px 700px at 5% 100%, rgba(48, 112, 185, 0.2), transparent 55%),
+        linear-gradient(90deg, #081122 0%, #0b1629 46%, #08202a 100%);
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
 
-*{box-sizing:border-box;margin:0;padding:0}
+    .bg-lines {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -2;
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,0.03) 0px,
+        rgba(255,255,255,0.03) 1px,
+        transparent 1px,
+        transparent 140px
+      );
+      opacity: 0.25;
+    }
 
-body{
-font-family:"Source Sans 3",sans-serif;
-background:var(--bg);
-color:var(--text);
-line-height:1.6;
-}
+    .container {
+      width: min(1240px, calc(100% - 32px));
+      margin: 0 auto;
+    }
 
-nav{
-position:fixed;
-top:0;
-width:100%;
-background:rgba(10,10,15,.6);
-backdrop-filter:blur(10px);
-padding:18px 40px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-z-index:100;
-}
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      padding: 14px 0;
+      backdrop-filter: blur(2px);
+      background: linear-gradient(to bottom, rgba(6,12,24,0.72), rgba(6,12,24,0));
+    }
 
-nav a{
-color:var(--text);
-text-decoration:none;
-margin-left:25px;
-font-size:14px;
-opacity:.85;
-transition:.3s;
-}
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+    }
 
-nav a:hover{
-color:var(--accent);
-opacity:1;
-}
+    .logo {
+      text-decoration: none;
+      color: var(--text);
+      font-family: "Playfair Display", serif;
+      font-size: clamp(28px, 3.5vw, 52px);
+      line-height: 1;
+      font-weight: 700;
+      white-space: nowrap;
+      margin-right: 14px;
+    }
 
-main{
-max-width:1100px;
-margin:auto;
-padding:120px 20px 80px;
-}
+    .logo .dot { color: var(--accent); }
 
-.hero h1{
-font-family:"Outfit",sans-serif;
-font-size:48px;
-margin-bottom:10px;
-}
+    .menu {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      flex: 1;
+    }
 
-.hero h2{
-color:var(--accent);
-font-weight:400;
-margin-bottom:20px;
-}
+    .menu a {
+      text-decoration: none;
+      color: #d6dfef;
+      font-size: clamp(14px, 1.25vw, 20px);
+      font-weight: 600;
+      opacity: 0.82;
+      position: relative;
+      padding-bottom: 6px;
+      transition: 0.22s;
+    }
 
-.hero p{
-max-width:620px;
-color:var(--muted);
-margin-bottom:30px;
-}
+    .menu a:hover,
+    .menu a.active {
+      color: var(--accent);
+      opacity: 1;
+    }
 
-.buttons a{
-display:inline-block;
-margin-right:15px;
-padding:12px 20px;
-border-radius:8px;
-border:1px solid var(--accent);
-text-decoration:none;
-color:var(--accent);
-transition:.3s;
-font-size:14px;
-}
+    .menu a.active::after,
+    .menu a:hover::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
 
-.buttons a:hover{
-background:var(--accent);
-color:#000;
-}
+    .nav-side {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
 
-section{
-margin-top:90px;
-}
+    .mini-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid rgba(239, 133, 79, 0.55);
+      box-shadow: 0 0 0 3px rgba(255,255,255,0.08);
+      background: #111c31;
+      flex-shrink: 0;
+    }
 
-h3{
-font-family:"Outfit",sans-serif;
-margin-bottom:20px;
-font-size:28px;
-}
+    .mini-avatar img { width: 100%; height: 100%; object-fit: cover; }
 
-.skills{
-display:flex;
-flex-wrap:wrap;
-gap:10px;
-}
+    .resume-btn {
+      text-decoration: none;
+      font-size: clamp(14px, 1.15vw, 24px);
+      font-weight: 700;
+      color: #fff;
+      padding: clamp(8px, 0.8vw, 12px) clamp(14px, 1.7vw, 24px);
+      border-radius: 999px;
+      background: var(--accent);
+      transition: 0.2s;
+      box-shadow: 0 10px 24px rgba(239, 133, 79, 0.28);
+    }
 
-.skill{
-background:var(--card);
-padding:8px 14px;
-border-radius:6px;
-font-size:13px;
-border:1px solid #1c1c28;
-}
+    .resume-btn:hover { transform: translateY(-2px); }
 
-.projects{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:20px;
-}
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding-top: clamp(92px, 10vw, 120px);
+    }
 
-.card{
-background:var(--card);
-padding:25px;
-border-radius:12px;
-border:1px solid #1c1c28;
-transition:.35s;
-}
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+      gap: clamp(14px, 2vw, 30px);
+      width: 100%;
+    }
 
-.card:hover{
-transform:translateY(-6px);
-border-color:var(--accent);
-}
+    .open-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(239, 133, 79, 0.45);
+      color: #ffb48e;
+      background: rgba(239, 133, 79, 0.14);
+      border-radius: 999px;
+      padding: clamp(8px, 1vw, 12px) clamp(14px, 1.4vw, 22px);
+      font-size: clamp(14px, 1.5vw, 30px);
+      font-weight: 600;
+      margin-bottom: clamp(14px, 1.5vw, 24px);
+    }
 
-.card h4{
-margin-bottom:8px;
-font-family:"Outfit";
-}
+    .hero h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(52px, 8.4vw, 138px);
+      line-height: 0.93;
+      margin-bottom: clamp(14px, 1.6vw, 24px);
+      letter-spacing: 0.3px;
+    }
 
-.card p{
-color:var(--muted);
-font-size:14px;
-margin-bottom:15px;
-}
+    .hero .hi {
+      display: block;
+      color: #ecf1fb;
+      font-style: italic;
+      font-weight: 500;
+    }
 
-.card a{
-color:var(--accent);
-text-decoration:none;
-font-size:14px;
-}
+    .hero .name {
+      display: block;
+      color: #f1a34f;
+      font-weight: 700;
+    }
 
-.timeline{
-border-left:2px solid #1c1c28;
-padding-left:25px;
-}
+    .hero .role {
+      font-size: clamp(24px, 2.25vw, 42px);
+      color: #ccd7eb;
+      max-width: 34ch;
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
 
-.job{
-margin-bottom:30px;
-}
+    .hero .summary {
+      color: var(--muted);
+      font-size: clamp(20px, 1.7vw, 31px);
+      max-width: 42ch;
+      margin-bottom: 24px;
+    }
 
-.job h4{
-font-family:"Outfit";
-}
+    .socials {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
 
-.job span{
-font-size:13px;
-color:var(--muted);
-}
+    .socials a {
+      width: 56px;
+      height: 56px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      background: rgba(255,255,255,0.04);
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #d8e0f0;
+      text-decoration: none;
+      transition: 0.2s;
+    }
 
-footer{
-margin-top:90px;
-padding-top:30px;
-border-top:1px solid #1c1c28;
-text-align:center;
-color:var(--muted);
-font-size:14px;
-}
-</style>
+    .socials a:hover {
+      border-color: rgba(239, 133, 79, 0.65);
+      color: #ffc09f;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(5, 10, 18, 0.35);
+    }
+
+    .socials svg { width: 22px; height: 22px; }
+
+    .hero-photo-zone {
+      position: relative;
+      min-height: clamp(360px, 42vw, 620px);
+      display: grid;
+      place-items: center;
+    }
+
+    .orb-ring,
+    .orb-ring-2 {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(239, 133, 79, 0.14);
+      pointer-events: none;
+    }
+
+    .orb-ring {
+      width: clamp(340px, 36vw, 580px);
+      height: clamp(340px, 36vw, 580px);
+      box-shadow: inset 0 0 60px rgba(239, 133, 79, 0.08);
+    }
+
+    .orb-ring-2 {
+      width: clamp(390px, 40vw, 640px);
+      height: clamp(390px, 40vw, 640px);
+      border-style: dashed;
+      opacity: 0.55;
+    }
+
+    .hero-photo {
+      width: min(450px, 92%);
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid rgba(239, 133, 79, 0.45);
+      box-shadow: var(--glow);
+      position: relative;
+      z-index: 2;
+      background: #0f1b31;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 22%;
+    }
+
+    .dot {
+      position: absolute;
+      border-radius: 50%;
+      z-index: 3;
+      filter: blur(0.2px);
+    }
+
+    .dot.a { width: 13px; height: 13px; background: #f1a34f; top: 12%; right: 12%; }
+    .dot.b { width: 10px; height: 10px; background: #56bfcc; right: 10%; bottom: 25%; }
+    .dot.c { width: 18px; height: 18px; background: #f1a34f; left: 13%; bottom: 18%; }
+
+    .scroll-indicator {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 22px;
+      color: rgba(235, 241, 251, 0.72);
+      text-align: center;
+      font-size: 20px;
+      opacity: 0.9;
+      animation: bounce 2s infinite;
+    }
+
+    .mouse {
+      width: 28px;
+      height: 46px;
+      border: 2px solid rgba(235, 241, 251, 0.46);
+      border-radius: 18px;
+      margin: 0 auto 6px;
+      position: relative;
+    }
+
+    .mouse::before {
+      content: "";
+      width: 5px;
+      height: 9px;
+      border-radius: 999px;
+      background: rgba(235, 241, 251, 0.75);
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 7px;
+      animation: wheel 1.6s infinite;
+    }
+
+    @keyframes wheel {
+      0% { opacity: 0.95; transform: translateX(-50%) translateY(0); }
+      100% { opacity: 0.1; transform: translateX(-50%) translateY(14px); }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(4px); }
+    }
+
+    .section {
+      padding: clamp(58px, 8vw, 96px) 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      background: linear-gradient(180deg, rgba(11, 20, 36, 0.55), rgba(7, 14, 28, 0.65));
+    }
+
+    .section h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(42px, 5vw, 60px);
+      margin-bottom: 12px;
+    }
+
+    .section p.lead {
+      color: var(--muted);
+      font-size: clamp(17px, 1.35vw, 22px);
+      max-width: 80ch;
+      margin-bottom: 28px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px;
+    }
+
+    .card h3 { font-size: clamp(21px, 2.1vw, 28px); margin-bottom: 10px; }
+    .card p { color: var(--muted); font-size: clamp(15px, 1.25vw, 18px); }
+
+    .project-img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      border: 1px solid rgba(255,255,255,0.13);
+    }
+
+    .tags { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tags span {
+      font-size: 13px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #c5d0e3;
+    }
+
+    .timeline { display: grid; gap: 14px; }
+    .job {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-left: 3px solid rgba(239, 133, 79, 0.75);
+      border-radius: 14px;
+      padding: 16px;
+    }
+    .job h3 { font-size: clamp(22px, 2vw, 29px); margin-bottom: 2px; }
+    .job .meta { color: #f7b190; font-size: clamp(14px, 1.2vw, 18px); margin-bottom: 8px; }
+    .job ul { padding-left: 18px; color: var(--muted); font-size: clamp(15px, 1.2vw, 18px); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .contact-grid a {
+      text-decoration: none;
+      color: #d9e2f3;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 10px;
+      padding: 12px;
+      background: rgba(255,255,255,0.04);
+      font-size: clamp(15px, 1.2vw, 18px);
+    }
+
+    .contact-grid a:hover { border-color: rgba(239, 133, 79, 0.65); }
+
+    footer {
+      padding: 26px 0 32px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mobile-toggle {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.06);
+      color: #e4ecfb;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .mobile-panel {
+      display: none;
+      width: 100%;
+      margin-top: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(10, 20, 36, 0.95);
+      border-radius: 12px;
+      padding: 10px;
+      gap: 8px;
+      flex-direction: column;
+    }
+
+    .mobile-panel.open { display: flex; }
+
+    .mobile-panel a {
+      text-decoration: none;
+      color: #dce5f6;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 10px 8px;
+      border-radius: 8px;
+    }
+
+    .mobile-panel a:hover,
+    .mobile-panel a.active {
+      color: #ffb48e;
+      background: rgba(239, 133, 79, 0.12);
+    }
+
+    @media (max-width: 1180px) {
+      .logo { font-size: 34px; }
+      .menu a { font-size: 16px; }
+      .resume-btn { font-size: 18px; padding: 10px 18px; }
+      .hero .role { font-size: 24px; }
+      .hero .summary { font-size: 20px; }
+      .open-pill { font-size: 20px; }
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-photo-zone { min-height: 360px; order: -1; }
+      .menu { display: none; }
+      .mobile-toggle { display: inline-flex; }
+      .logo { font-size: 32px; }
+      .nav { flex-wrap: wrap; }
+      .nav-side { margin-left: auto; }
+      .hero .role { max-width: 28ch; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: calc(100% - 28px); }
+      .nav-side { gap: 8px; }
+      .mini-avatar { width: 40px; height: 40px; }
+      .resume-btn { font-size: 14px; padding: 8px 12px; }
+      .hero h1 { font-size: clamp(46px, 14.5vw, 78px); }
+      .hero .role { font-size: clamp(18px, 6vw, 26px); }
+      .hero .summary { font-size: clamp(16px, 4.9vw, 20px); }
+      .open-pill { font-size: 17px; padding: 8px 14px; }
+      .socials a { width: 48px; height: 48px; }
+      .scroll-indicator { display: none; }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="bg-lines" aria-hidden="true"></div>
 
-<nav>
-<div><strong>GM</strong></div>
-<div>
-<a href="#projects">Projetos</a>
-<a href="#about">Sobre</a>
-<a href="#contact">Contato</a>
-</div>
-</nav>
+  <header class="header">
+    <div class="container nav">
+      <a class="logo" href="#about">Glaydson<span class="dot">.</span>M</a>
 
-<main>
+      <nav class="menu">
+        <a href="#about" class="active">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
 
-<section class="hero">
-<h1>Glaydson Moreira</h1>
-<h2>Data Engineer • Data Analyst • Backend Developer</h2>
+      <div class="nav-side">
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menu">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 6h18M3 12h18M3 18h18"></path>
+          </svg>
+        </button>
+        <div class="mini-avatar">
+          <img src="assets/profile.jpg" alt="Foto de Glaydson" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80';" />
+        </div>
+        <a class="resume-btn" href="#contact">Resume</a>
+      </div>
+      <nav class="mobile-panel" id="mobilePanel">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-<p>
-Analista de Business Intelligence especializado em dados, analytics e automação.
-Experiência com SQL, Python, dashboards analíticos e desenvolvimento de soluções
-para análise de dados, engenharia de dados e performance empresarial.
-</p>
+  <main>
+    <section class="hero" id="about">
+      <div class="container hero-grid">
+        <div>
+          <div class="open-pill">✧ Open to Opportunities</div>
 
-<div class="buttons">
-<a href="#projects">Ver Projetos</a>
-<a href="https://www.linkedin.com/in/gmoreirati" target="_blank">LinkedIn</a>
-<a href="https://github.com/glaydson-moreira" target="_blank">GitHub</a>
-</div>
-</section>
+          <h1>
+            <span class="hi">Hi, I'm</span>
+            <span class="name">Glaydson</span>
+            <span class="name">Moreira</span>
+          </h1>
 
-<section id="about">
-<h3>Sobre Mim</h3>
+          <p class="role">Senior BI Analyst · Data Analyst · Data Engineering & Automation</p>
+          <p class="summary">Turning complex business data into decision-ready insights. 8+ years with analytics, dashboards and automation in strategic environments.</p>
 
-<p style="max-width:720px;color:var(--muted);margin-bottom:20px;">
-Profissional focado em dados, engenharia analítica e desenvolvimento backend.
-Atuo criando soluções que transformam dados em inteligência estratégica,
-com experiência em SQL avançado, Python, BI e arquitetura de dados.
-</p>
+          <div class="socials">
+            <a href="https://www.linkedin.com/in/gmoreirati" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a href="https://github.com/glaydson-moreira" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6-1.5 6-7A5.4 5.4 0 0 0 20 4.8 5 5 0 0 0 19.9 1S18.7.7 16 2.6a13.4 13.4 0 0 0-8 0C5.3.7 4.1 1 4.1 1A5 5 0 0 0 4 4.8 5.4 5.4 0 0 0 3 8.5c0 5.5 3 6.7 6 7a3.4 3.4 0 0 0-.9 2.6V22"></path></svg>
+            </a>
+            <a href="mailto:gmoreirati@gmail.com" aria-label="Email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"></path><path d="m22 6-10 7L2 6"></path></svg>
+            </a>
+            <a href="#projects" aria-label="Code">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 18 6-6-6-6"></path><path d="m8 6-6 6 6 6"></path></svg>
+            </a>
+            <a href="#contact" aria-label="Terminal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 17 6-6-6-6"></path><path d="M12 19h8"></path></svg>
+            </a>
+          </div>
+        </div>
 
-<div class="skills">
-<div class="skill">Python</div>
-<div class="skill">SQL</div>
-<div class="skill">Power BI</div>
-<div class="skill">Data Engineering</div>
-<div class="skill">Analytics</div>
-<div class="skill">Machine Learning</div>
-<div class="skill">APIs</div>
-<div class="skill">Backend</div>
-</div>
-</section>
+        <div class="hero-photo-zone" aria-label="Foto principal">
+          <div class="orb-ring"></div>
+          <div class="orb-ring-2"></div>
+          <div class="dot a"></div>
+          <div class="dot b"></div>
+          <div class="dot c"></div>
 
-<section id="projects">
-<h3>Projetos</h3>
+          <div class="hero-photo">
+            <img src="assets/profile.jpg" alt="Foto de Glaydson Moreira" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1000&q=80';" />
+          </div>
+        </div>
+      </div>
 
-<div class="projects">
+      <div class="scroll-indicator" aria-hidden="true">
+        <div class="mouse"></div>
+        <div>↓</div>
+      </div>
+    </section>
 
-<div class="card">
-<h4>RSAC App</h4>
-<p>
-Aplicação para geração automatizada de relatórios e processamento de dados
-voltados para análise e gestão de informações.
-</p>
-<a href="https://github.com/glaydson-moreira/RSAC_app" target="_blank">
-Ver repositório
-</a>
-</div>
+    <section id="experience" class="section reveal">
+      <div class="container">
+        <h2>Experience</h2>
+        <p class="lead">Atuação com Business Intelligence, modelagem de dados, governança e automação em ambientes de alta criticidade.</p>
+        <div class="timeline">
+          <article class="job">
+            <h3>Analista de Business Intelligence Sênior</h3>
+            <p class="meta">Qintess / BASA • set/2025 - atual</p>
+            <ul>
+              <li>Dashboards estratégicos em Power BI para diretoria.</li>
+              <li>Modelagem de dados em Oracle SQL Developer / OCI.</li>
+              <li>Automação analítica em Python e governança no CODIN.</li>
+            </ul>
+          </article>
+          <article class="job">
+            <h3>Analista de Dados PL III</h3>
+            <p class="meta">Stefanini / BASA • nov/2024 - set/2025</p>
+            <ul>
+              <li>Indicadores gerenciais com foco em eficiência operacional.</li>
+              <li>Modelagem e análise de dados em Oracle SQL.</li>
+              <li>Automação de rotinas e consistência de dados no COBIN.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
 
-<div class="card">
-<h4>Oliver Platform</h4>
-<p>
-Sistema de gestão empresarial com módulos de vendas, financeiro e controle
-de operações. Projeto focado em backend e integração de dados.
-</p>
-<a href="https://github.com/useOliver/oliver" target="_blank">
-Ver repositório
-</a>
-</div>
+    <section id="education" class="section reveal">
+      <div class="container">
+        <h2>Education</h2>
+        <p class="lead">Base técnica em redes e especialização em dados aplicada ao contexto de negócio.</p>
+        <div class="grid-3">
+          <article class="card">
+            <h3>PUC Minas</h3>
+            <p>Pós-Graduação em Ciência de Dados e IA (em andamento desde 2024.2).</p>
+          </article>
+          <article class="card">
+            <h3>UNAMA</h3>
+            <p>CST em Redes de Computadores (2017.1 - 2019.2).</p>
+          </article>
+          <article class="card">
+            <h3>Idiomas</h3>
+            <p>Inglês intermediário para leitura técnica e comunicação profissional.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-<div class="card">
-<h4>Norte Performance</h4>
-<p>
-Ferramenta analítica voltada para performance de dados e dashboards
-estratégicos para análise de negócios.
-</p>
-<a href="https://github.com/glaydson-moreira/nortePerformance" target="_blank">
-Ver repositório
-</a>
-</div>
+    <section id="projects" class="section reveal">
+      <div class="container">
+        <h2>Projects</h2>
+        <p class="lead">Projetos com foco em automação, visualização e aceleração de decisões baseadas em dados.</p>
+        <div class="grid-3">
+          <article class="card">
+            <img class="project-img" src="assets/project-rsac.jpg" alt="RSAC App" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80';" />
+            <h3>RSAC App</h3>
+            <p>Automação de relatórios e processamento de dados para análises estratégicas.</p>
+            <div class="tags"><span>Python</span><span>ETL</span><span>Power BI</span></div>
+          </article>
+          <article class="card">
+            <img class="project-img" src="assets/project-oliver.jpg" alt="Oliver Platform" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80';" />
+            <h3>Oliver Platform</h3>
+            <p>Backend e integração de dados para gestão empresarial.</p>
+            <div class="tags"><span>Backend</span><span>APIs</span><span>Data</span></div>
+          </article>
+          <article class="card">
+            <img class="project-img" src="assets/project-norte.jpg" alt="Norte Performance" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1551281044-8b29c7f47e27?auto=format&fit=crop&w=1200&q=80';" />
+            <h3>Norte Performance</h3>
+            <p>Dashboards e monitoramento de KPIs para apoio ao negócio.</p>
+            <div class="tags"><span>Power BI</span><span>KPIs</span><span>Analytics</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-</div>
-</section>
+    <section id="skills" class="section reveal">
+      <div class="container">
+        <h2>Skills</h2>
+        <p class="lead">Stack consolidada em BI, engenharia e automação de dados.</p>
+        <div class="grid-3">
+          <article class="card"><h3>BI & Analytics</h3><p>Power BI, DAX, storytelling de dados, indicadores executivos e governança.</p></article>
+          <article class="card"><h3>Dados</h3><p>SQL Server, Oracle SQL, PL/SQL, modelagem e qualidade de dados.</p></article>
+          <article class="card"><h3>Automação</h3><p>Python para ETL, rotinas analíticas, integração e padronização de processos.</p></article>
+        </div>
+      </div>
+    </section>
 
-<section>
-<h3>Experiência</h3>
+    <section id="contact" class="section reveal">
+      <div class="container">
+        <h2>Contact</h2>
+        <p class="lead">Disponível para oportunidades em Business Intelligence, Data Analytics e Engenharia de Dados.</p>
+        <div class="contact-grid">
+          <a href="mailto:gmoreirati@gmail.com">gmoreirati@gmail.com</a>
+          <a href="tel:+5591982281917">(91) 9 8228-1917</a>
+          <a href="https://www.linkedin.com/in/gmoreirati" target="_blank" rel="noopener noreferrer">linkedin.com/in/gmoreirati</a>
+          <a href="https://github.com/glaydson-moreira" target="_blank" rel="noopener noreferrer">github.com/glaydson-moreira</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-<div class="timeline">
+  <footer>
+    <p>Glaydson Moreira • Belém - PA</p>
+  </footer>
 
-<div class="job">
-<h4>Senior BI Analyst</h4>
-<span>Qintess / Banco da Amazônia</span>
-<p style="color:var(--muted);font-size:14px;">
-Desenvolvimento de soluções analíticas, dashboards estratégicos e
-integração de dados para suporte à tomada de decisão.
-</p>
-</div>
+  <script>
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.menu a, .mobile-panel a');
 
-<div class="job">
-<h4>Data & Analytics Projects</h4>
-<span>Projetos independentes</span>
-<p style="color:var(--muted);font-size:14px;">
-Desenvolvimento de sistemas analíticos, automação de processos e
-ferramentas de análise de dados.
-</p>
-</div>
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const id = '#' + entry.target.id;
+        navLinks.forEach((link) => {
+          link.classList.toggle('active', link.getAttribute('href') === id);
+        });
+      });
+    }, { threshold: 0.45 });
 
-</div>
-</section>
+    sections.forEach((section) => navObserver.observe(section));
 
-<footer id="contact">
-<p>
-Conecte-se comigo:
-<a href="https://www.linkedin.com/in/gmoreirati" style="color:var(--accent)">LinkedIn</a>
- • 
-<a href="https://github.com/glaydson-moreira" style="color:var(--accent)">GitHub</a>
-</p>
-</footer>
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.12 });
 
-</main>
+    document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
 
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobilePanel = document.getElementById('mobilePanel');
+
+    mobileToggle?.addEventListener('click', () => {
+      mobilePanel.classList.toggle('open');
+    });
+
+    mobilePanel?.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => mobilePanel.classList.remove('open'));
+    });
+  </script>
 </body>
 </html>
