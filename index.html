@@ -271,6 +271,124 @@ footer { padding: 26px 0 32px; text-align: center; color: var(--muted); font-siz
   .exp-logo-wrap { display: none; }
   .exp-timeline::before { display: none; }
   .projects-grid { grid-template-columns: 1fr; }
+  .life-grid { grid-template-columns: 1fr; }
+  .contact-grid-new { grid-template-columns: 1fr; }
+}
+
+/* ── LIFE OUTSIDE ────────────────────── */
+.section-dark {
+  background: linear-gradient(180deg, #0a1220 0%, #0d1628 100%) !important;
+}
+.life-badge {
+  display: inline-block; padding: 6px 16px; border-radius: 999px;
+  background: rgba(239,133,79,0.15); border: 1px solid rgba(239,133,79,0.4);
+  color: #f7b190; font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+  margin-bottom: 16px;
+}
+.life-title { text-align: left; }
+.life-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(28px, 4vw, 60px); align-items: start; margin-top: 40px;
+}
+.life-photo-wrap {
+  border-radius: 20px; overflow: hidden;
+  aspect-ratio: 4/5; max-height: 500px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.life-photo-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.life-content { display: flex; flex-direction: column; gap: 24px; }
+.life-desc { color: #ccd5e8; font-size: clamp(15px, 1.2vw, 18px); line-height: 1.75; }
+.life-group { display: flex; flex-direction: column; gap: 10px; }
+.life-group-label {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+  color: var(--accent); text-transform: uppercase;
+}
+.life-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.life-tags span {
+  padding: 7px 14px; border-radius: 999px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
+  color: #c5d0e3; font-size: clamp(13px, 1vw, 15px);
+}
+.life-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px; border-radius: 999px;
+  background: linear-gradient(135deg, #ef854f, #e85d2f);
+  color: #fff; text-decoration: none; font-size: 15px; font-weight: 700;
+  box-shadow: 0 8px 24px rgba(239,133,79,0.35);
+  transition: 0.2s; width: fit-content;
+}
+.life-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(239,133,79,0.45); }
+
+/* ── CONTACT NEW ─────────────────────── */
+.section-contact {
+  background: linear-gradient(160deg, #0b1624 0%, #0e1f1a 50%, #091420 100%) !important;
+  position: relative; overflow: hidden;
+}
+.section-contact::before {
+  content: ""; position: absolute;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(239,133,79,0.07), transparent 70%);
+  top: -200px; left: -100px; pointer-events: none;
+}
+.section-contact::after {
+  content: ""; position: absolute;
+  width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(20,80,60,0.15), transparent 70%);
+  bottom: -150px; right: -80px; pointer-events: none;
+}
+.contact-center { text-align: center; position: relative; z-index: 1; }
+.contact-title { justify-content: center; }
+.contact-subtitle { color: var(--muted); font-size: clamp(15px, 1.2vw, 18px); max-width: 52ch; margin: 0 auto 36px; line-height: 1.65; }
+.contact-grid-new {
+  display: grid; grid-template-columns: repeat(2, minmax(240px, 380px));
+  gap: 12px; justify-content: center; margin-bottom: 36px;
+}
+.contact-grid-new a {
+  text-decoration: none; color: #d9e2f3;
+  border: 1px solid rgba(255,255,255,0.14); border-radius: 12px;
+  padding: 16px 20px; background: rgba(255,255,255,0.04);
+  font-size: clamp(14px, 1.05vw, 16px); display: flex; align-items: center; gap: 12px;
+  transition: 0.2s; text-align: left;
+}
+.contact-grid-new a:hover { border-color: rgba(239,133,79,0.5); background: rgba(239,133,79,0.06); transform: translateY(-2px); }
+.contact-grid-new a svg { width: 17px; height: 17px; color: var(--accent); flex-shrink: 0; }
+.contact-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.cta-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 28px; border-radius: 999px;
+  background: linear-gradient(135deg, #ef854f, #e85d2f);
+  color: #fff; text-decoration: none; font-size: 15px; font-weight: 700;
+  box-shadow: 0 8px 24px rgba(239,133,79,0.35); transition: 0.2s;
+}
+.cta-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(239,133,79,0.45); }
+.cta-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 28px; border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.25); background: rgba(255,255,255,0.06);
+  color: var(--text); text-decoration: none; font-size: 15px; font-weight: 700;
+  transition: 0.2s;
+}
+.cta-secondary:hover { border-color: rgba(239,133,79,0.55); transform: translateY(-2px); }
+
+/* ── FOOTER NEW ──────────────────────── */
+.footer-new {
+  padding: 24px 0; border-top: 1px solid rgba(255,255,255,0.08);
+  background: rgba(5,10,20,0.6);
+}
+.footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.footer-inner span { color: var(--muted); font-size: 13px; }
+.footer-socials { display: flex; gap: 14px; }
+.footer-socials a { color: var(--muted); transition: 0.2s; }
+.footer-socials a:hover { color: var(--accent); }
+
+@media (max-width: 900px) {
+  .life-grid { grid-template-columns: 1fr; }
+  .contact-grid-new { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .footer-inner { flex-direction: column; text-align: center; }
 }
 </style>
 </head>
@@ -286,6 +404,7 @@ footer { padding: 26px 0 32px; text-align: center; color: var(--muted); font-siz
         <a href="#education">Education</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
+        <a href="#life">Life</a>
         <a href="#contact">Contact</a>
       </nav>
       <div class="nav-side">
@@ -303,6 +422,7 @@ footer { padding: 26px 0 32px; text-align: center; color: var(--muted); font-siz
         <a href="#education">Education</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
+        <a href="#life">Life</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -330,7 +450,7 @@ footer { padding: 26px 0 32px; text-align: center; color: var(--muted); font-siz
               <a href="https://github.com/glaydson-moreira" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6-1.5 6-7A5.4 5.4 0 0 0 20 4.8 5 5 0 0 0 19.9 1S18.7.7 16 2.6a13.4 13.4 0 0 0-8 0C5.3.7 4.1 1 4.1 1A5 5 0 0 0 4 4.8 5.4 5.4 0 0 0 3 8.5c0 5.5 3 6.7 6 7a3.4 3.4 0 0 0-.9 2.6V22"></path></svg>
               </a>
-              <a href="mailto:gmoreirati@gmail.com" aria-label="Email">
+              <a href="/cdn-cgi/l/email-protection#7413191b06111d0615001d341319151d185a171b19" aria-label="Email">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"></path></svg>
               </a>
               <a href="#projects" aria-label="Code">
@@ -655,13 +775,62 @@ footer { padding: 26px 0 32px; text-align: center; color: var(--muted); font-siz
       </div>
     </section>
 
-    <!-- ── CONTACT ─────────────────────────────────────────── -->
-    <section id="contact" class="section reveal">
+    <!-- ── LIFE OUTSIDE ───────────────────────────────────── -->
+    <section id="life" class="section section-dark reveal">
       <div class="container">
-        <h2 class="section-title"><span class="accent">Contact</span></h2>
-        <div class="section-title-underline"></div>
-        <p class="lead">Disponível para oportunidades em Business Intelligence, Data Analytics e Engenharia de Dados.</p>
-        <div class="contact-grid">
+        <div class="life-badge">BEYOND WORK</div>
+        <h2 class="section-title life-title">Life Outside the <span class="accent">Terminal</span></h2>
+
+        <div class="life-grid">
+          <div class="life-photo-wrap">
+            <img src="assets/life.jpg" alt="Glaydson fora do trabalho"
+              onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80';" />
+          </div>
+          <div class="life-content">
+            <p class="life-desc">Quando não estou analisando dados ou construindo dashboards, estou explorando a vida. Adoro descobrir novos restaurantes — especialmente a culinária paraense — e música nunca falta no fone.</p>
+
+            <div class="life-group">
+              <div class="life-group-label">
+                <span>✦</span> FITNESS & ESPORTES
+              </div>
+              <div class="life-tags">
+                <span>💪 Academia</span>
+                <span>🏃 Corrida</span>
+                <span>🏊 Natação</span>
+                <span>⚽ Futebol</span>
+              </div>
+            </div>
+
+            <div class="life-group">
+              <div class="life-group-label">
+                <span>🎯</span> PAIXÕES & HOBBIES
+              </div>
+              <div class="life-tags">
+                <span>🍽️ Gastronomia</span>
+                <span>🎵 Música</span>
+                <span>📚 Leitura Tech</span>
+                <span>✈️ Viagens</span>
+                <span>🎮 Games</span>
+              </div>
+            </div>
+
+            <a href="https://www.linkedin.com/in/gmoreirati" target="_blank" rel="noopener noreferrer" class="life-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              Conectar no LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CONTACT ─────────────────────────────────────────── -->
+    <section id="contact" class="section section-contact reveal">
+      <div class="container contact-center">
+        <h2 class="section-title contact-title">Let's <span class="accent">Connect</span></h2>
+        <div class="section-title-underline" style="margin: 8px auto 24px;"></div>
+        <p class="contact-subtitle">Disponível para oportunidades em Business Intelligence, Data Analytics e Engenharia de Dados. Vamos conversar!</p>
+
+        <div class="contact-grid-new">
           <a href="mailto:gmoreirati@gmail.com">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
             gmoreirati@gmail.com
@@ -670,13 +839,24 @@ footer { padding: 26px 0 32px; text-align: center; color: var(--muted); font-siz
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.84a16 16 0 0 0 6.29 6.29l.95-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             (91) 9 8228-1917
           </a>
+          <a href="#" aria-label="Localização">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Belém, PA · Open to Relocate
+          </a>
           <a href="https://www.linkedin.com/in/gmoreirati" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
             linkedin.com/in/gmoreirati
           </a>
-          <a href="https://github.com/glaydson-moreira" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6-1.5 6-7A5.4 5.4 0 0 0 20 4.8 5 5 0 0 0 19.9 1S18.7.7 16 2.6a13.4 13.4 0 0 0-8 0C5.3.7 4.1 1 4.1 1A5 5 0 0 0 4 4.8 5.4 5.4 0 0 0 3 8.5c0 5.5 3 6.7 6 7a3.4 3.4 0 0 0-.9 2.6V22"/></svg>
-            github.com/glaydson-moreira
+        </div>
+
+        <div class="contact-ctas">
+          <a href="assets/resume.pdf" download class="cta-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Resume
+          </a>
+          <a href="https://github.com/glaydson-moreira" target="_blank" rel="noopener noreferrer" class="cta-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6-1.5 6-7A5.4 5.4 0 0 0 20 4.8 5 5 0 0 0 19.9 1S18.7.7 16 2.6a13.4 13.4 0 0 0-8 0C5.3.7 4.1 1 4.1 1A5 5 0 0 0 4 4.8 5.4 5.4 0 0 0 3 8.5c0 5.5 3 6.7 6 7a3.4 3.4 0 0 0-.9 2.6V22"/></svg>
+            GitHub
           </a>
         </div>
       </div>
@@ -684,8 +864,24 @@ footer { padding: 26px 0 32px; text-align: center; color: var(--muted); font-siz
 
   </main>
 
-  <footer>
-    <p>Glaydson Moreira • Belém - PA</p>
+  <footer class="footer-new">
+    <div class="container footer-inner">
+      <span>© 2025 Glaydson Moreira. Todos os direitos reservados.</span>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/in/gmoreirati" target="_blank" aria-label="LinkedIn">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="https://github.com/glaydson-moreira" target="_blank" aria-label="GitHub">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6-1.5 6-7A5.4 5.4 0 0 0 20 4.8 5 5 0 0 0 19.9 1S18.7.7 16 2.6a13.4 13.4 0 0 0-8 0C5.3.7 4.1 1 4.1 1A5 5 0 0 0 4 4.8 5.4 5.4 0 0 0 3 8.5c0 5.5 3 6.7 6 7a3.4 3.4 0 0 0-.9 2.6V22"/></svg>
+        </a>
+        <a href="mailto:gmoreirati@gmail.com" aria-label="Email">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+        </a>
+        <a href="#projects" aria-label="Code">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg>
+        </a>
+      </div>
+    </div>
   </footer>
 
 <script>
