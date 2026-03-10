@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glaydson Moreira | Data & Backend Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--bg:#0a0a0f;
+--card:#11111a;
+--accent:#2ad1c9;
+--text:#e7e7ec;
+--muted:#9aa0a6;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:"Source Sans 3",sans-serif;
+background:var(--bg);
+color:var(--text);
+line-height:1.6;
+}
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+background:rgba(10,10,15,.6);
+backdrop-filter:blur(10px);
+padding:18px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:100;
+}
+
+nav a{
+color:var(--text);
+text-decoration:none;
+margin-left:25px;
+font-size:14px;
+opacity:.85;
+transition:.3s;
+}
+
+nav a:hover{
+color:var(--accent);
+opacity:1;
+}
+
+main{
+max-width:1100px;
+margin:auto;
+padding:120px 20px 80px;
+}
+
+.hero h1{
+font-family:"Outfit",sans-serif;
+font-size:48px;
+margin-bottom:10px;
+}
+
+.hero h2{
+color:var(--accent);
+font-weight:400;
+margin-bottom:20px;
+}
+
+.hero p{
+max-width:620px;
+color:var(--muted);
+margin-bottom:30px;
+}
+
+.buttons a{
+display:inline-block;
+margin-right:15px;
+padding:12px 20px;
+border-radius:8px;
+border:1px solid var(--accent);
+text-decoration:none;
+color:var(--accent);
+transition:.3s;
+font-size:14px;
+}
+
+.buttons a:hover{
+background:var(--accent);
+color:#000;
+}
+
+section{
+margin-top:90px;
+}
+
+h3{
+font-family:"Outfit",sans-serif;
+margin-bottom:20px;
+font-size:28px;
+}
+
+.skills{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+}
+
+.skill{
+background:var(--card);
+padding:8px 14px;
+border-radius:6px;
+font-size:13px;
+border:1px solid #1c1c28;
+}
+
+.projects{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:20px;
+}
+
+.card{
+background:var(--card);
+padding:25px;
+border-radius:12px;
+border:1px solid #1c1c28;
+transition:.35s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+border-color:var(--accent);
+}
+
+.card h4{
+margin-bottom:8px;
+font-family:"Outfit";
+}
+
+.card p{
+color:var(--muted);
+font-size:14px;
+margin-bottom:15px;
+}
+
+.card a{
+color:var(--accent);
+text-decoration:none;
+font-size:14px;
+}
+
+.timeline{
+border-left:2px solid #1c1c28;
+padding-left:25px;
+}
+
+.job{
+margin-bottom:30px;
+}
+
+.job h4{
+font-family:"Outfit";
+}
+
+.job span{
+font-size:13px;
+color:var(--muted);
+}
+
+footer{
+margin-top:90px;
+padding-top:30px;
+border-top:1px solid #1c1c28;
+text-align:center;
+color:var(--muted);
+font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div><strong>GM</strong></div>
+<div>
+<a href="#projects">Projetos</a>
+<a href="#about">Sobre</a>
+<a href="#contact">Contato</a>
+</div>
+</nav>
+
+<main>
+
+<section class="hero">
+<h1>Glaydson Moreira</h1>
+<h2>Data Engineer • Data Analyst • Backend Developer</h2>
+
+<p>
+Analista de Business Intelligence especializado em dados, analytics e automação.
+Experiência com SQL, Python, dashboards analíticos e desenvolvimento de soluções
+para análise de dados, engenharia de dados e performance empresarial.
+</p>
+
+<div class="buttons">
+<a href="#projects">Ver Projetos</a>
+<a href="https://www.linkedin.com/in/gmoreirati" target="_blank">LinkedIn</a>
+<a href="https://github.com/glaydson-moreira" target="_blank">GitHub</a>
+</div>
+</section>
+
+<section id="about">
+<h3>Sobre Mim</h3>
+
+<p style="max-width:720px;color:var(--muted);margin-bottom:20px;">
+Profissional focado em dados, engenharia analítica e desenvolvimento backend.
+Atuo criando soluções que transformam dados em inteligência estratégica,
+com experiência em SQL avançado, Python, BI e arquitetura de dados.
+</p>
+
+<div class="skills">
+<div class="skill">Python</div>
+<div class="skill">SQL</div>
+<div class="skill">Power BI</div>
+<div class="skill">Data Engineering</div>
+<div class="skill">Analytics</div>
+<div class="skill">Machine Learning</div>
+<div class="skill">APIs</div>
+<div class="skill">Backend</div>
+</div>
+</section>
+
+<section id="projects">
+<h3>Projetos</h3>
+
+<div class="projects">
+
+<div class="card">
+<h4>RSAC App</h4>
+<p>
+Aplicação para geração automatizada de relatórios e processamento de dados
+voltados para análise e gestão de informações.
+</p>
+<a href="https://github.com/glaydson-moreira/RSAC_app" target="_blank">
+Ver repositório
+</a>
+</div>
+
+<div class="card">
+<h4>Oliver Platform</h4>
+<p>
+Sistema de gestão empresarial com módulos de vendas, financeiro e controle
+de operações. Projeto focado em backend e integração de dados.
+</p>
+<a href="https://github.com/useOliver/oliver" target="_blank">
+Ver repositório
+</a>
+</div>
+
+<div class="card">
+<h4>Norte Performance</h4>
+<p>
+Ferramenta analítica voltada para performance de dados e dashboards
+estratégicos para análise de negócios.
+</p>
+<a href="https://github.com/glaydson-moreira/nortePerformance" target="_blank">
+Ver repositório
+</a>
+</div>
+
+</div>
+</section>
+
+<section>
+<h3>Experiência</h3>
+
+<div class="timeline">
+
+<div class="job">
+<h4>Senior BI Analyst</h4>
+<span>Qintess / Banco da Amazônia</span>
+<p style="color:var(--muted);font-size:14px;">
+Desenvolvimento de soluções analíticas, dashboards estratégicos e
+integração de dados para suporte à tomada de decisão.
+</p>
+</div>
+
+<div class="job">
+<h4>Data & Analytics Projects</h4>
+<span>Projetos independentes</span>
+<p style="color:var(--muted);font-size:14px;">
+Desenvolvimento de sistemas analíticos, automação de processos e
+ferramentas de análise de dados.
+</p>
+</div>
+
+</div>
+</section>
+
+<footer id="contact">
+<p>
+Conecte-se comigo:
+<a href="https://www.linkedin.com/in/gmoreirati" style="color:var(--accent)">LinkedIn</a>
+ • 
+<a href="https://github.com/glaydson-moreira" style="color:var(--accent)">GitHub</a>
+</p>
+</footer>
+
+</main>
+
+</body>
+</html>
